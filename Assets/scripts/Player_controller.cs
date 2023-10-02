@@ -15,6 +15,7 @@ public class Player_controller : MonoBehaviour
     
     public GameObject billPrefab;
     public Sprite bill;
+    public float billOffset;
 
     public Camera cam;
     public float shootDelay;
@@ -65,32 +66,11 @@ public class Player_controller : MonoBehaviour
             // create bullet and add components
             Vector2 projDirection = mousepos - rb.transform.position;
             projDirection = projDirection.normalized;
-            Vector2 billPos = rb.transform.position + (new Vector3(projDirection.x, projDirection.y, 0) *1);
+            Vector2 billPos = rb.transform.position + (new Vector3(projDirection.x, projDirection.y, 0) * billOffset);
             GameObject bill = Instantiate(billPrefab, billPos, Quaternion.identity);
-
-
-
-            /*GameObject proj = new GameObject("projectile");
-            Rigidbody2D projRb = proj.AddComponent<Rigidbody2D>();
-            SpriteRenderer projSprite = proj.AddComponent<SpriteRenderer>();
-            CircleCollider2D projCollider = proj.AddComponent<CircleCollider2D>();
-
-            proj.tag = "bullet";
-            projCollider.radius = 1.9f;
-            projCollider.offset = new Vector2(-0.7f, 0);
-            projSprite.sprite = bill;
-            projRb.gravityScale = 0;
-            proj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-            projSprite.sortingLayerName = "Foreground";
-            proj.transform.position = ;
-
             float projRotation = Mathf.Atan2(projDirection.y, projDirection.x) * Mathf.Rad2Deg + 180;
-            proj.transform.rotation = Quaternion.Euler(0, 0, projRotation);
-
-            StartCoroutine(killBill(projLifespan, proj));
-
-            projRb.velocity = projDirection * projspeed;
-            */
+            bill.transform.rotation = Quaternion.Euler(0, 0, projRotation);
+            bill.GetComponent<Rigidbody2D>().velocity = projDirection * projspeed;
         }
     }
 

@@ -290,13 +290,13 @@ MonoBehaviour:
   undergroundSpeed: 0
   spawner: 0
   spawnedLimit: 0
-  subEnemyRef: {fileID: 0}
+  subEnemyRef: {fileID: 6671867368555442382}
   swarmSize: 1
   spawnDelay: 3
   spawnRadius: 4
   randomizeSpawnRadius: 0
-  minEnemyDistanceToPlayer: 6
-  minDistanceToPlayer: 6
+  minEnemyDistanceToPlayer: 0
+  minDistanceToPlayer: 0
   canSpawn: 0
 --- !u!114 &9210055230746780687
 MonoBehaviour:
