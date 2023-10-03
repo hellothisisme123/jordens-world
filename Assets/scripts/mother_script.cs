@@ -47,7 +47,6 @@ public class mother_script : MonoBehaviour
                     for (int i = 0; i < swarmSize; i++)
                     {
                         Vector2 spawnPos = rb.transform.position;
-                        //spawnPos += new Vector2(Random.Range(-spawnRadius, spawnRadius), Random.Range(-spawnRadius, spawnRadius));
                         float spawnOffset;
                         float spawnAngle = Random.Range(0, 359);
                         if (randomizeSpawnRadius)
@@ -56,7 +55,7 @@ public class mother_script : MonoBehaviour
                         }
                         else
                         {
-                            spawnOffset = Random.Range(0, spawnRadius);
+                            spawnOffset = spawnRadius;
                         }
 
                         spawnPos += new Vector2(spawnOffset * Mathf.Cos(spawnAngle), spawnOffset * Mathf.Sin(spawnAngle));
