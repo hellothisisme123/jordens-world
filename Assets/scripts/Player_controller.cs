@@ -30,13 +30,13 @@ public class Player_controller : MonoBehaviour
     void Start()
     {
         canShoot = true;
-        alive = true;
         canRoll = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        alive = GetComponent<healthbar>().alive;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         Vector3 mousepos = cam.ScreenToWorldPoint(Input.mousePosition);
 

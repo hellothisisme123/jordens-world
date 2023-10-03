@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class enemy_pathfinding : MonoBehaviour
 {
-
     public GameObject player;
     public bool alive;
     private int speed;
@@ -22,7 +21,6 @@ public class enemy_pathfinding : MonoBehaviour
     public float burrowStartRange;
     public float burrowEndRange;
     public int undergroundSpeed;
-
     
     public bool spawner;
     public int spawnedLimit; // max limit for how many enemies that can be spawned at once
@@ -36,18 +34,10 @@ public class enemy_pathfinding : MonoBehaviour
     [SerializeField] bool canSpawn;
     private GameObject[] subEnemies; // list of subEnemies spawned currently
 
-
-
-    public bool GetAlive()
-    {
-        return alive;
-    }
-
     public void Start()
     {
         // hardcode this on at start of game
         canDash = true;
-        alive = true;
         player = GameObject.FindGameObjectWithTag("Player");
         speed = walkSpeed;
                     
@@ -59,6 +49,7 @@ public class enemy_pathfinding : MonoBehaviour
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         Vector2 direction = player.transform.position - rb.transform.position;
+        alive = GetComponent<healthbar>().alive;
 
         if (spawner)
         {
@@ -88,11 +79,8 @@ public class enemy_pathfinding : MonoBehaviour
                         spawnPos += new Vector2(spawnOffset * Mathf.Cos(spawnAngle), spawnOffset * Mathf.Sin(spawnAngle));
                         GameObject newEnemy = Instantiate(subEnemyRef, spawnPos, Quaternion.identity);
                         newEnemy.tag = "enemy";
-
-                        
                     }
                 }
-
             }
         }
 

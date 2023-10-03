@@ -19,6 +19,7 @@ public class healthbar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        alive = true;
         hp = maxHp;
         playerController = gameObject.GetComponent<MonoScript>();
     }
@@ -81,11 +82,7 @@ public class healthbar : MonoBehaviour
         if (gameObject.tag != "Player")
         {
             Destroy(gameObject.GetComponent<CircleCollider2D>());
-            gameObject.GetComponent<enemy_pathfinding>().alive = false;
-        } else
-        {
-            gameObject.GetComponent<Player_controller>().alive = false;
-
         }
+        alive = false;
     }
 }

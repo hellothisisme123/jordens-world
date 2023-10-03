@@ -10,9 +10,6 @@ public class camera_script : MonoBehaviour
     public float scrollSpeed;
     public Vector2 minMaxSize;
     private Camera cam;
-    
-
-
 
     // Start is called before the first frame update
     void Start()
