@@ -10,7 +10,7 @@ public class camera_script : MonoBehaviour
     public float scrollSpeed;
     public Vector2 minMaxSize;
     private Camera cam;
-
+    
 
 
 
