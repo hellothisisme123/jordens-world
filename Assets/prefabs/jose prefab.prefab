@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 6671867368555442382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.41, y: -0.09, z: 0}
-  m_LocalScale: {x: 0.1791, y: 0.1791, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3952885348881974051}
@@ -277,27 +277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  alive: 0
   walkSpeed: 5000
   randDirectionModifier: 1.3
-  dashRange: 2.5
-  dashSpeed: 2000
-  dashDelay: 0.4
-  canBurrow: 0
-  underground: 0
-  burrowStartRange: 0
-  burrowEndRange: 0
-  undergroundSpeed: 0
-  spawner: 0
-  spawnedLimit: 0
-  subEnemyRef: {fileID: 6671867368555442382}
-  swarmSize: 1
-  spawnDelay: 3
-  spawnRadius: 4
-  randomizeSpawnRadius: 0
-  minEnemyDistanceToPlayer: 0
-  minDistanceToPlayer: 0
-  canSpawn: 0
 --- !u!114 &9210055230746780687
 MonoBehaviour:
   m_ObjectHideFlags: 0

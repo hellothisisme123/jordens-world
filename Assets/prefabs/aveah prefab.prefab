@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 9047490596064338007}
   - component: {fileID: 1727165046738509679}
   - component: {fileID: 287195133304816323}
+  - component: {fileID: -3920464540072814559}
+  - component: {fileID: -7964864096485845426}
+  - component: {fileID: 6712212936105200503}
   m_Layer: 0
   m_Name: aveah prefab
   m_TagString: enemy
@@ -207,17 +210,9 @@ MonoBehaviour:
   alive: 0
   walkSpeed: 3750
   randDirectionModifier: 1.3
-  dashRange: 3.5
-  dashSpeed: 1500
-  dashDelay: 0.4
-  canBurrow: 1
-  underground: 0
-  burrowStartRange: 12.5
-  burrowEndRange: 3
-  undergroundSpeed: 7000
   spawner: 0
   spawnedLimit: 0
-  enemyToSpawn: 
+  subEnemyRef: {fileID: 0}
   swarmSize: 0
   spawnDelay: 0
   spawnRadius: 0
@@ -225,6 +220,48 @@ MonoBehaviour:
   minEnemyDistanceToPlayer: 0
   minDistanceToPlayer: 0
   canSpawn: 0
+--- !u!114 &-3920464540072814559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671867368555442382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a14b6dcbca05a4aa1a0cec61ac606d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashRange: 0
+  dashSpeed: 0
+  dashDelay: 0
+--- !u!114 &-7964864096485845426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671867368555442382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79621657e56e4f4d97c87c7f8f161b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burrowStartRange: 10
+  burrowEndRange: 3
+  undergroundSpeed: 5000
+--- !u!114 &6712212936105200503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671867368555442382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df23cf96caca59d45914306d279aac3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5467117476778581363
 PrefabInstance:
   m_ObjectHideFlags: 0

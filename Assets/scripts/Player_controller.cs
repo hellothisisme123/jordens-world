@@ -20,7 +20,7 @@ public class Player_controller : MonoBehaviour
     public Camera cam;
     public float shootDelay;
     public bool canShoot;
-    public bool alive;
+    public bool alive; // tied to healthbar.cs
     public int rollSpeed;
     public float rollDelay;
     public bool canRoll;
@@ -67,7 +67,7 @@ public class Player_controller : MonoBehaviour
             Vector2 projDirection = mousepos - rb.transform.position;
             projDirection = projDirection.normalized;
             Vector2 billPos = rb.transform.position + (new Vector3(projDirection.x, projDirection.y, 0) * billOffset);
-            GameObject bill = Instantiate(billPrefab, billPos, Quaternion.identity);
+            GameObject bill = Instantiate(billPrefab, billPos, Quaternion.identity, rb.transform);
             float projRotation = Mathf.Atan2(projDirection.y, projDirection.x) * Mathf.Rad2Deg + 180;
             bill.transform.rotation = Quaternion.Euler(0, 0, projRotation);
             bill.GetComponent<Rigidbody2D>().velocity = projDirection * projspeed;

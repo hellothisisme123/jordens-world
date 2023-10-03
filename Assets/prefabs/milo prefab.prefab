@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9047490596064338007}
   - component: {fileID: 1727165046738509679}
   - component: {fileID: 287195133304816323}
+  - component: {fileID: -8648602950118533034}
   m_Layer: 0
   m_Name: milo prefab
   m_TagString: enemy
@@ -207,9 +208,6 @@ MonoBehaviour:
   alive: 0
   walkSpeed: 4500
   randDirectionModifier: 1.3
-  dashRange: 3.5
-  dashSpeed: 1500
-  dashDelay: 0.4
   canBurrow: 0
   underground: 0
   burrowStartRange: 0
@@ -217,7 +215,7 @@ MonoBehaviour:
   undergroundSpeed: 0
   spawner: 0
   spawnedLimit: 0
-  enemyToSpawn: 
+  subEnemyRef: {fileID: 0}
   swarmSize: 0
   spawnDelay: 0
   spawnRadius: 0
@@ -225,6 +223,23 @@ MonoBehaviour:
   minEnemyDistanceToPlayer: 0
   minDistanceToPlayer: 0
   canSpawn: 0
+--- !u!114 &-8648602950118533034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671867368555442382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a14b6dcbca05a4aa1a0cec61ac606d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  alive: 0
+  dashRange: 0
+  dashSpeed: 0
+  dashDelay: 0
 --- !u!1001 &3258065863482202893
 PrefabInstance:
   m_ObjectHideFlags: 0
