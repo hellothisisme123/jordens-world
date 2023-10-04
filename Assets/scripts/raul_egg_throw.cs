@@ -12,14 +12,18 @@ public class raul_egg_throw : MonoBehaviour
     private Rigidbody2D prb;
     private Rigidbody2D rb;
     private bool canThrow;
-    public Vector2 minMaxThrowDistance;
+    public Vector2 throwRange;
     public float eggSpawnDistance; // how far away the eggs will spawn from the player
 
     private GameObject player;
     private Vector2 playerCurrentLocation;
     private Vector2 playerDirection; // direction to where the player will be
     private Vector2 playerVelocity;
-    private Vector2 playerPredictedLocation; // prediction for where the player will be after throwtime
+    private Vector2 vectorToPredictedLocation; // prediction for where the player will be after throwtime
+
+    public Vector2 GetThrowRange() {
+        return throwRange;
+    }
 
     void Start()
     {
@@ -35,11 +39,11 @@ public class raul_egg_throw : MonoBehaviour
         bool alivePlayer = player.GetComponent<healthbar>().alive;
         bool alive = GetComponent<healthbar>().alive;
         playerCurrentLocation = player.transform.position;
-        playerPredictedLocation = playerCurrentLocation + (playerVelocity / throwTime);
+        vectorToPredictedLocation = playerCurrentLocation + (playerVelocity / throwTime) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
         Vector2 vectorToPlayer = player.transform.position - gameObject.transform.position;
         float distanceToPlayer = vectorToPlayer.magnitude;
 
-        if (canThrow && alive && alivePlayer && distanceToPlayer > minMaxThrowDistance.x && distanceToPlayer < minMaxThrowDistance.y)
+        if (canThrow && alive && alivePlayer && distanceToPlayer > throwRange.x && distanceToPlayer < throwRange.y)
         {
             canThrow = false;
             StartCoroutine(setThrow());
@@ -50,11 +54,10 @@ public class raul_egg_throw : MonoBehaviour
             egg_script eggScript = eggRb.GetComponent<egg_script>();
 
             eggScript.SetGravForce(new Vector2(0, 0));
-
-            eggRb.AddForce(vectorToPlayer / throwTime);
+            
+            
+            eggRb.AddForce(vectorToPredictedLocation / throwTime, ForceMode2D.Impulse);
         }
-
-
     }
 
     private IEnumerator setThrow()

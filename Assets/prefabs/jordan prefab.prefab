@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2404668061055578615}
   - component: {fileID: 5238955579069566032}
   - component: {fileID: 6178513157202530802}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: jordan prefab
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ MonoBehaviour:
   shootDelay: 0.3
   canShoot: 1
   alive: 0
-  rollSpeed: 2000
+  rollSpeed: 50
   rollDelay: 1
   canRoll: 0
   latestDirection: {x: 0, y: 0}

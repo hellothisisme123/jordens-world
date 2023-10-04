@@ -17,10 +17,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - world
+  - player
+  - enemies
+  - enemyProjectiles
   - 
   - 
   - 

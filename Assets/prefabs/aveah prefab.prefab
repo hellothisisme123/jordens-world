@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -3920464540072814559}
   - component: {fileID: -7964864096485845426}
   - component: {fileID: 6712212936105200503}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: aveah prefab
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -206,20 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f4d92dd86abaf47a82da0e878758f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  alive: 0
   walkSpeed: 3750
   randDirectionModifier: 1.3
-  spawner: 0
-  spawnedLimit: 0
-  subEnemyRef: {fileID: 0}
-  swarmSize: 0
-  spawnDelay: 0
-  spawnRadius: 0
-  randomizeSpawnRadius: 0
-  minEnemyDistanceToPlayer: 0
-  minDistanceToPlayer: 0
-  canSpawn: 0
 --- !u!114 &-3920464540072814559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +250,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df23cf96caca59d45914306d279aac3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  subEnemyRef: {fileID: 0}
+  spawnedLimit: 0
+  swarmSize: 0
+  spawnDelay: 0
+  spawnRadius: 0
+  randomizeSpawnRadius: 0
+  minEnemyDistanceToPlayer: 0
+  minDistanceToPlayer: 0
 --- !u!1001 &5467117476778581363
 PrefabInstance:
   m_ObjectHideFlags: 0

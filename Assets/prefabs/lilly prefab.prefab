@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 287195133304816323}
   - component: {fileID: -4614305178785391225}
   - component: {fileID: 2616382199776307685}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lilly prefab
   m_TagString: enemy
   m_Icon: {fileID: 0}

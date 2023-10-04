@@ -12,7 +12,6 @@ public class healthbar : MonoBehaviour
     public int damagePlayerEnemyKnockback;
     public int damagePlayerPlayerKnockback;
     public bool alive;
-    public MonoScript playerController;
 
 
 
@@ -21,12 +20,10 @@ public class healthbar : MonoBehaviour
     {
         alive = true;
         hp = maxHp;
-        playerController = gameObject.GetComponent<MonoScript>();
     }
 
     void Update()
     {
-        //alive = playerController.alive;
     }
 
     void OnCollisionEnter2D(Collision2D col)

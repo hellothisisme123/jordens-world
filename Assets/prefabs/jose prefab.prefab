@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1727165046738509679}
   - component: {fileID: 287195133304816323}
   - component: {fileID: 9210055230746780687}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: jose prefab
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -276,7 +276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f4d92dd86abaf47a82da0e878758f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   walkSpeed: 5000
   randDirectionModifier: 1.3
 --- !u!114 &9210055230746780687

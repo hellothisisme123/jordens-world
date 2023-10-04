@@ -52,7 +52,7 @@ public class Player_controller : MonoBehaviour
             // Debug.Log("roll");
             canRoll = false;
             StartCoroutine(allowRoll());
-            rb.AddForce(latestDirection * rollSpeed);
+            rb.AddForce(latestDirection * rollSpeed, ForceMode2D.Impulse);
             
         }
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1736476321499794123}
   - component: {fileID: 3221967015700574164}
   - component: {fileID: -5175300731202275323}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bill prefab
   m_TagString: bullet
   m_Icon: {fileID: 0}
