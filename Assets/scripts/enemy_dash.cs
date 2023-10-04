@@ -16,6 +16,8 @@ public class enemy_dash : MonoBehaviour
     private bool canDash;
     private bool inDashRange;
 
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -26,7 +28,6 @@ public class enemy_dash : MonoBehaviour
     void Update()
     {
         alive = GetComponent<healthbar>().alive;
-
 
         Vector2 distanceToPlayer = player.transform.position - gameObject.transform.position;
         if (distanceToPlayer.magnitude < dashRange)
@@ -44,11 +45,11 @@ public class enemy_dash : MonoBehaviour
             canDash = false;
             //Debug.Log("false");
             rb.AddForce(distanceToPlayer.normalized * dashSpeed);
-            StartCoroutine(allowDash(dashDelay));
+            StartCoroutine(allowDash());
         }
     }
 
-    private IEnumerator allowDash(float sec)
+    private IEnumerator allowDash()
     {
         yield return new WaitForSeconds(dashDelay);
         canDash = true;
