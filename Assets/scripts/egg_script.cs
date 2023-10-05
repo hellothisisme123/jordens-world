@@ -16,20 +16,27 @@ public class egg_script : MonoBehaviour
     public float spinSpeed;
 
     public Vector2 gravForce;
-    
+    public Vector2 launchForceY;
+
     public void SetGravForce(Vector2 g)
     {
         gravForce = g;
     }
 
+    public void SetLaunchForceY(Vector2 f)
+    {
+        launchForceY = f;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        gravForce = new Vector2(0, 0);
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         
         rb.transform.Rotate(Vector3.forward * Random.Range(0, 359));
+        rb.AddForce(launchForceY, ForceMode2D.Impulse);
+
 
         randVal = Random.Range(0, 10);
         if (randVal == 0)
@@ -52,7 +59,7 @@ public class egg_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(gravForce);
-        rb.transform.Rotate(Vector3.forward * spinSpeed);
+        rb.AddForce(gravForce, ForceMode2D.Force);
+        rb.transform.Rotate(Vector3.forward * spinSpeed * Time.deltaTime);
     }
 }

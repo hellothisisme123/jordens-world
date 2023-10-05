@@ -14,6 +14,7 @@ public class raul_egg_throw : MonoBehaviour
     private bool canThrow;
     public Vector2 throwRange;
     public float eggSpawnDistance; // how far away the eggs will spawn from the player
+    public float eggGravForceMult; // multiplier for the gravity force applied to the egg
 
     private GameObject player;
     private Vector2 playerCurrentLocation;
@@ -54,9 +55,22 @@ public class raul_egg_throw : MonoBehaviour
             egg_script eggScript = eggRb.GetComponent<egg_script>();
 
             eggScript.SetGravForce(new Vector2(0, 0));
-            
-            
-            eggRb.AddForce(vectorToPredictedLocation / throwTime, ForceMode2D.Impulse);
+
+            Vector2 launchForceX = vectorToPredictedLocation / throwTime;
+            Vector2 gravForce = new Vector2(launchForceX.normalized.x * launchForceX.normalized.y, -Mathf.Abs(launchForceX.normalized.x)) * eggGravForceMult;
+            Vector2 launchForceY = -gravForce * 2 * throwTime * throwTime;
+
+            //launchForceX.
+            Debug.Log($"launchForceX: {launchForceX}");
+            Debug.Log($"gravForce: {gravForce}");
+            Debug.Log($"launchForceY: {launchForceY}");
+
+            eggScript.SetGravForce(gravForce);
+            eggScript.SetLaunchForceY(launchForceY * 1.5f);
+            /*eggRb.AddForce(launchForceX, ForceMode2D.Impulse);*/
+
+
+            // eggRb.AddForce(-gravForce * eggGravForceMult * 4, ForceMode2D.Force);
         }
     }
 

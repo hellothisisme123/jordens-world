@@ -131,7 +131,7 @@ MonoBehaviour:
   brownEgg: {fileID: 21300000, guid: 7a1a0bf30acc3b54d868f4406243ec53, type: 3}
   purpleEgg: {fileID: 21300000, guid: 48eed56cc0a0e2741a2ca77d1752a72f, type: 3}
   chosenEgg: 
-  spinSpeed: 4
+  spinSpeed: 2
   gravForce: {x: 0, y: 0}
 --- !u!70 &883321236419191278
 CapsuleCollider2D:
