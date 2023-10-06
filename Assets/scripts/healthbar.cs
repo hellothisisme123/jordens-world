@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class healthbar : MonoBehaviour
 {
 
-    public int maxHp;
-    public int hp;
+    public float maxHp;
+    private float hp;
     public int damagePlayerEnemyKnockback;
     public int damagePlayerPlayerKnockback;
     public bool alive;
+    public Image healthFill;
+
 
 
 
@@ -56,9 +59,15 @@ public class healthbar : MonoBehaviour
                 {
                     enemy.GetComponent<Rigidbody2D>().AddForce(damageDirection.normalized * damagePlayerEnemyKnockback);
                 }
+
+                setHealthbar();
             }
         }
     }
+
+    public void setHealthbar() {
+        healthFill.fillAmount = hp / maxHp;
+    } 
 
     public void explosionAnimationEnd(Animation a)
     {

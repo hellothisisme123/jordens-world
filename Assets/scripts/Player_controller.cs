@@ -21,39 +21,24 @@ public class Player_controller : MonoBehaviour
     public float shootDelay;
     public bool canShoot;
     public bool alive; // tied to healthbar.cs
-    public int rollSpeed;
-    public float rollDelay;
-    public bool canRoll;
-    public Vector2 latestDirection;
+    public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         canShoot = true;
-        canRoll = true;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         alive = GetComponent<healthbar>().alive;
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
         Vector3 mousepos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         if (alive)
         {
             rb.AddForce(new Vector2(speed * Input.GetAxis("Horizontal") * Time.deltaTime, speed * Input.GetAxis("Vertical") * Time.deltaTime));
-        }
-
-        setPrevDirection();
-
-        if (Input.GetButton("Roll") && canRoll)
-        {
-            // Debug.Log("roll");
-            canRoll = false;
-            StartCoroutine(allowRoll());
-            rb.AddForce(latestDirection * rollSpeed, ForceMode2D.Impulse);
-            
         }
 
         if (Input.GetButton("Fire1"))
@@ -72,56 +57,6 @@ public class Player_controller : MonoBehaviour
             bill.transform.rotation = Quaternion.Euler(0, 0, projRotation);
             bill.GetComponent<Rigidbody2D>().velocity = projDirection * projspeed;
         }
-    }
-
-    private void setPrevDirection()
-    {
-        if (Input.GetAxis("Horizontal") < 0 && Input.GetAxis("Vertical") == 0)
-        {
-            latestDirection.x = -1f;
-            latestDirection.y = 0;
-        }
-        else if (Input.GetAxis("Horizontal") < 0 && Input.GetAxis("Vertical") > 0)
-        {
-            latestDirection.x = -1f;
-            latestDirection.y = 1f;
-        }
-        else if (Input.GetAxis("Horizontal") < 0 && Input.GetAxis("Vertical") < 0)
-        {
-            latestDirection.x = -1f;
-            latestDirection.y = -1f;
-        }
-        else if (Input.GetAxis("Horizontal") > 0 && Input.GetAxis("Vertical") == 0)
-        {
-            latestDirection.x = 1f;
-            latestDirection.y = 0;
-        }
-        else if (Input.GetAxis("Horizontal") > 0 && Input.GetAxis("Vertical") > 0)
-        {
-            latestDirection.x = 1f;
-            latestDirection.y = 1f;
-        }
-        else if (Input.GetAxis("Horizontal") > 0 && Input.GetAxis("Vertical") < 0)
-        {
-            latestDirection.x = 1f;
-            latestDirection.y = -1f;
-        }
-        else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") < 0)
-        {
-            latestDirection.x = 0;
-            latestDirection.y = -1f;
-        }
-        else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") > 0)
-        {
-            latestDirection.x = 0;
-            latestDirection.y = 1f;
-        }
-    }
-
-    private IEnumerator allowRoll()
-    {
-        yield return new WaitForSeconds(rollDelay);
-        canRoll = true;
     }
 
     private IEnumerator shootDelayFunc()
