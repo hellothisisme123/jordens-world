@@ -38,7 +38,7 @@ Transform:
   m_Children:
   - {fileID: 7844679782853536105}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6786128839872838302
 SpriteRenderer:
@@ -219,11 +219,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eggPrefab: {fileID: 4300659199726375588, guid: d5b52643b17f75b428a11918872206b4, type: 3}
-  throwDelay: 2
+  throwDelay: 4
   throwTime: 2
   throwRange: {x: 7, y: 25}
   eggSpawnDistance: 1
-  eggGravForceMult: 1
+  eggGravForceMult: 1.5
+  eggHomingForceMult: 2.5
 --- !u!114 &590968917375979767
 MonoBehaviour:
   m_ObjectHideFlags: 0

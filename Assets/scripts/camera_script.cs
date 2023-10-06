@@ -30,8 +30,6 @@ public class camera_script : MonoBehaviour
             } else if (cam.orthographicSize < minMaxSize.x) {
                 cam.orthographicSize = minMaxSize.x;
             }
-
-            
         }
     }
 }

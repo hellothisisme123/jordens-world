@@ -15,10 +15,10 @@ public class raul_egg_throw : MonoBehaviour
     public Vector2 throwRange;
     public float eggSpawnDistance; // how far away the eggs will spawn from the player
     public float eggGravForceMult; // multiplier for the gravity force applied to the egg
+    public float eggHomingForceMult; // multiplier for the homing force applied to the egg
 
     private GameObject player;
     private Vector2 playerCurrentLocation;
-    private Vector2 playerDirection; // direction to where the player will be
     private Vector2 playerVelocity;
     private Vector2 vectorToPredictedLocation; // prediction for where the player will be after throwtime
 
@@ -36,11 +36,8 @@ public class raul_egg_throw : MonoBehaviour
 
     void Update()
     {
-        playerVelocity = prb.velocity;
         bool alivePlayer = player.GetComponent<healthbar>().alive;
         bool alive = GetComponent<healthbar>().alive;
-        playerCurrentLocation = player.transform.position;
-        vectorToPredictedLocation = playerCurrentLocation + (playerVelocity / throwTime) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
         Vector2 vectorToPlayer = player.transform.position - gameObject.transform.position;
         float distanceToPlayer = vectorToPlayer.magnitude;
 
@@ -49,7 +46,11 @@ public class raul_egg_throw : MonoBehaviour
             canThrow = false;
             StartCoroutine(setThrow());
 
+            playerVelocity = prb.velocity;
+            playerCurrentLocation = player.transform.position;
+
             Vector2 eggSpawnPos = rb.transform.position + (player.transform.position - gameObject.transform.position).normalized * eggSpawnDistance;
+            vectorToPredictedLocation = playerCurrentLocation + (playerVelocity / throwTime) - eggSpawnPos;
             GameObject egg = Instantiate(eggPrefab, eggSpawnPos, Quaternion.identity, rb.transform);
             Rigidbody2D eggRb = egg.GetComponent<Rigidbody2D>();
             egg_script eggScript = eggRb.GetComponent<egg_script>();
@@ -58,19 +59,12 @@ public class raul_egg_throw : MonoBehaviour
 
             Vector2 launchForceX = vectorToPredictedLocation / throwTime;
             Vector2 gravForce = new Vector2(launchForceX.normalized.x * launchForceX.normalized.y, -Mathf.Abs(launchForceX.normalized.x)) * eggGravForceMult;
-            Vector2 launchForceY = -gravForce * 2 * throwTime * throwTime;
+            Vector2 launchForceY = -gravForce * 2 * throwTime * throwTime * eggGravForceMult;
 
-            //launchForceX.
-            Debug.Log($"launchForceX: {launchForceX}");
-            Debug.Log($"gravForce: {gravForce}");
-            Debug.Log($"launchForceY: {launchForceY}");
-
+            Vector2 launchForce = launchForceX + launchForceY;
             eggScript.SetGravForce(gravForce);
-            eggScript.SetLaunchForceY(launchForceY * 1.5f);
-            /*eggRb.AddForce(launchForceX, ForceMode2D.Impulse);*/
-
-
-            // eggRb.AddForce(-gravForce * eggGravForceMult * 4, ForceMode2D.Force);
+            eggScript.SetLaunchForce(launchForce);
+            eggScript.SetHomingForceMult(eggHomingForceMult);
         }
     }
 

@@ -170,7 +170,6 @@ MonoBehaviour:
   damagePlayerEnemyKnockback: 0
   damagePlayerPlayerKnockback: 0
   alive: 0
-  playerController: {fileID: 0}
 --- !u!95 &1727165046738509679
 Animator:
   serializedVersion: 5
@@ -218,9 +217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a14b6dcbca05a4aa1a0cec61ac606d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashRange: 0
-  dashSpeed: 0
-  dashDelay: 0
+  dashRange: 3
+  dashSpeed: 3500
+  dashDelay: 0.4
 --- !u!1001 &3258065863482202893
 PrefabInstance:
   m_ObjectHideFlags: 0

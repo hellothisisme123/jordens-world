@@ -48,7 +48,7 @@ public class mother_script : MonoBehaviour
                     {
                         Vector2 spawnPos = rb.transform.position;
                         float spawnOffset;
-                        float spawnAngle = Random.Range(0, 359);
+                        float spawnAngle = Random.Range(0, 359) * Mathf.Deg2Rad;
                         if (randomizeSpawnRadius)
                         {
                             spawnOffset = Random.Range(0, spawnRadius);

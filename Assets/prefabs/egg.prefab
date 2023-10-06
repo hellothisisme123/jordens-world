@@ -49,7 +49,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1.46
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -133,6 +133,7 @@ MonoBehaviour:
   chosenEgg: 
   spinSpeed: 2
   gravForce: {x: 0, y: 0}
+  launchForce: {x: 0, y: 0}
 --- !u!70 &883321236419191278
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

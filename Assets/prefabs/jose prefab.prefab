@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1727165046738509679}
   - component: {fileID: 287195133304816323}
   - component: {fileID: 9210055230746780687}
+  - component: {fileID: -6551919578819630425}
   m_Layer: 8
   m_Name: jose prefab
   m_TagString: enemy
@@ -242,7 +243,6 @@ MonoBehaviour:
   damagePlayerEnemyKnockback: 0
   damagePlayerPlayerKnockback: 0
   alive: 0
-  playerController: {fileID: 0}
 --- !u!95 &1727165046738509679
 Animator:
   serializedVersion: 5
@@ -293,6 +293,21 @@ MonoBehaviour:
   rotationOffset: 270
   player: {fileID: 0}
   rb: {fileID: 0}
+--- !u!114 &-6551919578819630425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671867368555442382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a14b6dcbca05a4aa1a0cec61ac606d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashRange: 3
+  dashSpeed: 3500
+  dashDelay: 0.4
 --- !u!1001 &8588478147248681287
 PrefabInstance:
   m_ObjectHideFlags: 0
