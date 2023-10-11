@@ -14,6 +14,7 @@ public class enemy_spawner : MonoBehaviour
     public int aveahCost;
     public int wesleyCost;
     public int lillyCost;
+    public int raulCost;
     public int sharpyCost;
     public int randomSpawnRange;
 
@@ -21,6 +22,7 @@ public class enemy_spawner : MonoBehaviour
     public GameObject aveah;
     public GameObject wesley;
     public GameObject lilly;
+    public GameObject raul;
     public GameObject sharpy;
 
     public GameObject[] enemyGameobjects;
@@ -31,8 +33,8 @@ public class enemy_spawner : MonoBehaviour
         // enemyGameobjects = new GameObject[]{ milo, aveah, wesley, lilly, sharpy};
         // enemyCosts = new int[]{miloCost, aveahCost, wesleyCost, lillyCost, sharpyCost};
 
-        enemyGameobjects = new GameObject[] { milo, aveah, wesley, lilly };
-        enemyCosts = new int[] { miloCost, aveahCost, wesleyCost, lillyCost };
+        enemyGameobjects = new GameObject[] { milo, aveah, wesley, lilly, raul };
+        enemyCosts = new int[] { miloCost, aveahCost, wesleyCost, lillyCost, raulCost };
 
         spawnEnemies();
     }

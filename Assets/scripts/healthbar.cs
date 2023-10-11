@@ -54,20 +54,16 @@ public class healthbar : MonoBehaviour
                 Vector2 damageDirection = col.collider.gameObject.transform.position - gameObject.transform.position;
                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
                 gameObject.GetComponent<Rigidbody2D>().AddForce(damageDirection.normalized * -damagePlayerPlayerKnockback);
-
+                
                 foreach (var enemy in enemies)
                 {
                     enemy.GetComponent<Rigidbody2D>().AddForce(damageDirection.normalized * damagePlayerEnemyKnockback);
                 }
-
-                setHealthbar();
+                
+                healthFill.fillAmount = hp / maxHp;
             }
         }
     }
-
-    public void setHealthbar() {
-        healthFill.fillAmount = hp / maxHp;
-    } 
 
     public void explosionAnimationEnd(Animation a)
     {

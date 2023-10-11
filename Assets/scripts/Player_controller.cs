@@ -41,14 +41,13 @@ public class Player_controller : MonoBehaviour
             rb.AddForce(new Vector2(speed * Input.GetAxis("Horizontal") * Time.deltaTime, speed * Input.GetAxis("Vertical") * Time.deltaTime));
         }
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && canShoot)
         {
             // shoot delay
-            if (!canShoot) return;
             canShoot = false;
             StartCoroutine(shootDelayFunc());
 
-            // create bullet and add components
+            // create bullet
             Vector2 projDirection = mousepos - rb.transform.position;
             projDirection = projDirection.normalized;
             Vector2 billPos = rb.transform.position + (new Vector3(projDirection.x, projDirection.y, 0) * billOffset);
@@ -57,6 +56,8 @@ public class Player_controller : MonoBehaviour
             bill.transform.rotation = Quaternion.Euler(0, 0, projRotation);
             bill.GetComponent<Rigidbody2D>().velocity = projDirection * projspeed;
         }
+
+        
     }
 
     private IEnumerator shootDelayFunc()

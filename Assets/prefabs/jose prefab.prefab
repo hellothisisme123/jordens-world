@@ -239,10 +239,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 1
-  hp: 0
   damagePlayerEnemyKnockback: 0
   damagePlayerPlayerKnockback: 0
   alive: 0
+  healthFill: {fileID: 0}
 --- !u!95 &1727165046738509679
 Animator:
   serializedVersion: 5
@@ -255,7 +255,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a952e72fc9119c149ab4b8370782edc8, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0

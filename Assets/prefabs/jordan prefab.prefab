@@ -173,10 +173,7 @@ MonoBehaviour:
   shootDelay: 0.3
   canShoot: 1
   alive: 0
-  rollSpeed: 50
-  rollDelay: 1
-  canRoll: 0
-  latestDirection: {x: 0, y: 0}
+  rb: {fileID: 0}
 --- !u!114 &5238955579069566032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,11 +187,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 3
-  hp: 0
   damagePlayerEnemyKnockback: 2000
   damagePlayerPlayerKnockback: 750
   alive: 0
-  playerController: {fileID: 0}
+  healthFill: {fileID: 0}
 --- !u!95 &6178513157202530802
 Animator:
   serializedVersion: 5
@@ -207,7 +203,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c2d26b5140ebea741aeac759e0195751, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
