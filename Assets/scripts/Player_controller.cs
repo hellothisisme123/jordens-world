@@ -21,7 +21,7 @@ public class Player_controller : MonoBehaviour
     public float shootDelay;
     public bool canShoot;
     public bool alive; // tied to healthbar.cs
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +34,6 @@ public class Player_controller : MonoBehaviour
     void Update()
     {
         alive = GetComponent<healthbar>().alive;
-        Vector3 mousepos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         if (alive)
         {
@@ -43,12 +42,20 @@ public class Player_controller : MonoBehaviour
 
         if (Input.GetButton("Fire1") && canShoot)
         {
+            // gets position of the mouse in world space
+            Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+            Debug.Log(Input.mousePosition);
+            // Vector3 halfScreenSize = new Vector3(Screen.width, Screen.height, 0) / 2;
+            // Vector3 mousepos = Input.mousePosition + new Vector3(-halfScreenSize.x, -halfScreenSize.y, 0) - halfScreenSize; // cam.ScreenToWorldPoint(Input.mousePosition);
+
+
+
             // shoot delay
             canShoot = false;
             StartCoroutine(shootDelayFunc());
 
             // create bullet
-            Vector2 projDirection = mousepos - rb.transform.position;
+            Vector2 projDirection = mousePos - rb.position;
             projDirection = projDirection.normalized;
             Vector2 billPos = rb.transform.position + (new Vector3(projDirection.x, projDirection.y, 0) * billOffset);
             GameObject bill = Instantiate(billPrefab, billPos, Quaternion.identity, rb.transform);

@@ -5,30 +5,25 @@ using UnityEngine;
 public class camera_script : MonoBehaviour
 {
     public Rigidbody2D player;  
-    public bool dynamicSize; 
-    public float initialSize;
+    public bool dynamicSize;
     public float scrollSpeed;
     public Vector2 minMaxSize;
-    private Camera cam;
+    private Camera mainCam;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        cam = GetComponent<Camera>();
-        cam.orthographicSize = initialSize;
+    void Start() {
+        if (gameObject.tag == "MainCamera") mainCam = GetComponent<Camera>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(player.position.x, player.position.y, -10);
+        transform.position = new Vector3(player.position.x, player.position.y, gameObject.transform.position.z);
         
         if (dynamicSize) {
-            cam.orthographicSize += -Input.mouseScrollDelta.y * scrollSpeed;
-            if (cam.orthographicSize > minMaxSize.y) {
-                cam.orthographicSize = minMaxSize.y;
-            } else if (cam.orthographicSize < minMaxSize.x) {
-                cam.orthographicSize = minMaxSize.x;
+            mainCam.fieldOfView += -Input.mouseScrollDelta.y * scrollSpeed;
+            if (mainCam.fieldOfView > minMaxSize.y) {
+                mainCam.fieldOfView = minMaxSize.y;
+            } else if (mainCam.fieldOfView < minMaxSize.x) {
+                mainCam.fieldOfView = minMaxSize.x;
             }
         }
     }

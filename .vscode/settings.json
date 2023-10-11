@@ -1,5 +1,14 @@
 {
     "files.exclude": {
+        "**/*.[Tt][Uu][Oo]": true,
+        "**/*.[Pp][Uu][Oo]": true,
+        "**/*.[Ff][Uu][Oo]": true,
+        "**/*.[Ff][Uu][Ll]": true,
+        "**/*.[Ff][Uu][Dd]": true,
+        "**/*.[Ss][Vv][Ll]": true,
+        "**/*.[Ss][Vv][Dd]": true,
+        "**/*.[Ii][Ss][Ll]": true,
+        "**/*.[Ii][Tt]": true,
         "**/.DS_Store": true,
         "**/.git": true,
         "**/.vs": true,
@@ -56,5 +65,149 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "jordens-world.sln"
+    "dotnet.defaultSolution": "jordens-world.sln",
+    "kestudiocode.iec.toolchainVersion": "1.2.0-alpha.10",
+    "[iec_src1]": {
+        "files.encoding": "windows1252"
+    },
+    "[iec_src2]": {
+        "files.encoding": "windows1252"
+    },
+    "[iec_sv1]": {
+        "files.encoding": "windows1252",
+        "editor.wordSeparators": "`~!@#$^&*()-=+[{]}\\|;:'\",.<>/?"
+    },
+    "[iec_sv2]": {
+        "files.encoding": "windows1252",
+        "editor.wordSeparators": "`~!@#$^&*()-=+[{]}\\|;:'\",.<>/?"
+    },
+    "[iec_fu]": {
+        "files.encoding": "windows1252"
+    },
+    "[iec_helper1]": {
+        "files.encoding": "windows1252"
+    },
+    "[iec_helper2]": {
+        "files.encoding": "windows1252",
+        "editor.wordSeparators": "`~!@$%^&*()-=+[{]}\\|;:'\",.<>/?"
+    },
+    "[iec_helper3]": {
+        "files.encoding": "windows1252"
+    },
+    "[iec_helper4]": {
+        "files.encoding": "windows1252"
+    },
+    "[iec_prj]": {
+        "files.encoding": "windows1252"
+    },
+    "[ini]": {
+        "files.encoding": "windows1252"
+    },
+    "[properties]": {
+        "files.encoding": "windows1252"
+    },
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true,
+        "rules": {
+            "keyword": {
+                "bold": true,
+                "foreground": "#3366d5"
+            },
+            "namespace": {
+                "bold": true,
+                "foreground": "#d533bb"
+            },
+            "class": {
+                "bold": true,
+                "foreground": "#ff0077"
+            },
+            "method": {
+                "bold": true,
+                "foreground": "#c86400"
+            },
+            "property": {
+                "bold": true,
+                "foreground": "#587d87"
+            },
+            "field": {
+                "bold": true,
+                "foreground": "#eb941a"
+            },
+            "constructor": {
+                "bold": true,
+                "foreground": "#927754"
+            },
+            "enum": {
+                "bold": true,
+                "foreground": "#e1afc3"
+            },
+            "interface": {
+                "bold": true,
+                "foreground": "#397797"
+            },
+            "function": {
+                "bold": true,
+                "foreground": "#a36526"
+            },
+            "variable": {
+                "bold": true,
+                "foreground": "#26cdca"
+            },
+            "constant": {
+                "bold": true,
+                "foreground": "#306b72"
+            },
+            "string": {
+                "bold": true,
+                "foreground": "#975415"
+            },
+            "number": {
+                "bold": true,
+                "foreground": "#587d87"
+            },
+            "boolean": {
+                "bold": true,
+                "foreground": "#57c2cc"
+            },
+            "array": {
+                "bold": true,
+                "foreground": "#6cbcdf"
+            },
+            "object": {
+                "bold": true,
+                "foreground": "#dd7a90"
+            },
+            "null": {
+                "bold": true,
+                "foreground": "#de3864"
+            },
+            "enumMember": {
+                "bold": true,
+                "foreground": "#a04360"
+            },
+            "struct": {
+                "bold": true,
+                "foreground": "#9b677f"
+            },
+            "event": {
+                "bold": true,
+                "foreground": "#e1afc3"
+            },
+            "operator": {
+                "bold": true,
+                "foreground": "#3ea0d2"
+            },
+            "typeParam": {
+                "bold": true,
+                "foreground": "#7ca6b7"
+            },
+            "unknown": {
+                "bold": true,
+                "foreground": "#dcdcaa"
+            }
+        }
+    },
+    "search.exclude": {
+        "**/.vscode": true
+    }
 }

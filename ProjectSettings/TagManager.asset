@@ -10,6 +10,7 @@ TagManager:
   - enemy
   - chest
   - enemyRenderer
+  - mainCam
   layers:
   - Default
   - TransparentFX
