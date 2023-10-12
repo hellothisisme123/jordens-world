@@ -37,7 +37,6 @@ public class mother_script : MonoBehaviour
         {
             if (direction.magnitude >= minDistanceToPlayer)
             {
-                // Debug.Log(direction.magnitude);
                 if (canSpawn)
                 {
                     canSpawn = false;
@@ -46,6 +45,12 @@ public class mother_script : MonoBehaviour
 
                     for (int i = 0; i < swarmSize; i++)
                     {
+                        // limits the amount of sub enemies that can be spawned
+                        if (transform.childCount > spawnedLimit) {
+                            i = swarmSize;
+                            return;
+                        }
+
                         Vector2 spawnPos = rb.transform.position;
                         float spawnOffset;
                         float spawnAngle = Random.Range(0, 359) * Mathf.Deg2Rad;

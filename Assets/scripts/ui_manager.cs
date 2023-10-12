@@ -3,30 +3,53 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using Unity.Mathematics;
+using UnityEngine.SceneManagement;
 
 public class ui_manager : MonoBehaviour
 {
-    private bool canExit;
+    private bool canPause;
     public GameObject shiftPauseLock;
     public float pauseDelay;
     public GameObject pressToStart;
     [SerializeField] bool screenLocked; 
     public GameObject notLockMenuItems; // the menu items hideable with shift (everything besides the lock)
     public GameObject pauseMenu;
+    public GameObject deathScreen;
+    private bool alive; // tied to healthbar.cs
+    public GameObject player;
+    public SceneManager sceneManager;
 
     void Start()
     {
-        canExit = true;
+        canPause = true;
         screenLocked = true;
     }
+    
+    // called at the end of explosion animation in healthbar.cs
+    public void playerDeath() {
+        deathScreen.SetActive(true);
 
-    // Update is called once per frame
+        canPause = false;
+        StartCoroutine(setCanPause(false));
+        screenLocked = false;
+    }
+
+    public void unpauseGame() {
+        screenLocked = false;
+    }
+
+    public void restartGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     void Update()
     {
-        if (Input.GetButton("Exit") && canExit) {
+        alive = player.GetComponent<healthbar>().alive;
+
+        if (Input.GetButton("Exit") && canPause) {
             // exit delay
-            canExit = false;
-            StartCoroutine(setExit());
+            StartCoroutine(setCanPause(true));
+            canPause = false;
 
             // locks screen
             screenLocked = !screenLocked;
@@ -36,7 +59,6 @@ public class ui_manager : MonoBehaviour
         if (screenLocked) {
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
-
         } else { // unpauses and hides pause menu
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
@@ -51,15 +73,20 @@ public class ui_manager : MonoBehaviour
             notLockMenuItems.SetActive(false);
         }
 
-
         if (Input.GetMouseButtonDown(0)) {
             pressToStart.SetActive(false);
         }
     }
 
-    private IEnumerator setExit() 
+    private IEnumerator setCanPause(bool val) 
     {
         yield return new WaitForSecondsRealtime(pauseDelay);
-        canExit = true;
+        canPause = val;
+    }
+
+    private IEnumerator setPauseMenuActive(bool val) 
+    {
+        yield return new WaitForSecondsRealtime(pauseDelay);
+        pauseMenu.SetActive(val);
     }
 }

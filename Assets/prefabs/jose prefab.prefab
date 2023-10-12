@@ -243,6 +243,7 @@ MonoBehaviour:
   damagePlayerPlayerKnockback: 0
   alive: 0
   healthFill: {fileID: 0}
+  uiManagerGO: {fileID: 0}
 --- !u!95 &1727165046738509679
 Animator:
   serializedVersion: 5
@@ -306,8 +307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashRange: 3
-  dashSpeed: 3500
-  dashDelay: 0.4
+  dashSpeed: 2000
+  dashDelay: 0.8
 --- !u!1001 &8588478147248681287
 PrefabInstance:
   m_ObjectHideFlags: 0

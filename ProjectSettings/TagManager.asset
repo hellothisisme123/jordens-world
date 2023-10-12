@@ -11,6 +11,7 @@ TagManager:
   - chest
   - enemyRenderer
   - mainCam
+  - egg
   layers:
   - Default
   - TransparentFX

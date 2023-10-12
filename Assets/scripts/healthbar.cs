@@ -14,25 +14,21 @@ public class healthbar : MonoBehaviour
     public int damagePlayerPlayerKnockback;
     public bool alive;
     public Image healthFill;
-
-
-
+    public GameObject uiManagerGO;
+    private bool invinsible;
+    public float iFrames; // in seconds
 
     // Start is called before the first frame update
     void Start()
     {
         alive = true;
         hp = maxHp;
-    }
-
-    void Update()
-    {
+        invinsible = false;
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
         Animator animator = GetComponent<Animator>();
-
 
         if (col.collider.gameObject.tag == "bullet" && gameObject.tag != "Player")
         {
@@ -40,14 +36,18 @@ public class healthbar : MonoBehaviour
             hp--;
         }
 
-        if (hp <= 0)
-        {
-            animator.SetTrigger("die");
-        }
-
         if (gameObject.tag == "Player" && alive)
         {
-            if (col.collider.gameObject.tag == "enemy")
+            if (invinsible) {
+                StartCoroutine(setInvinsible());
+                return;
+            } else {
+                invinsible = true; // sets invisible to true if it wasn't already
+                // play sound to indicate the shot was reflected by invinsibility
+                // for now this isnt yet implemented
+            }
+
+            if (col.collider.gameObject.tag == "enemy" || col.collider.gameObject.tag == "enemy")
             {
                 hp--;
                 animator.SetBool("playerHurt", true);
@@ -63,6 +63,16 @@ public class healthbar : MonoBehaviour
                 healthFill.fillAmount = hp / maxHp;
             }
         }
+        
+        if (hp <= 0)
+        {
+            animator.SetTrigger("die");
+        }
+    }
+
+    private IEnumerator setInvinsible() {
+        yield return new WaitForSeconds(iFrames);
+        invinsible = false;
     }
 
     public void explosionAnimationEnd(Animation a)
@@ -76,6 +86,8 @@ public class healthbar : MonoBehaviour
             Animator animator = GetComponent<Animator>();
             animator.SetTrigger("playerDeath");
             Debug.Log("player death");
+            ui_manager uiManagerScript = uiManagerGO.GetComponent<ui_manager>();
+            uiManagerScript.playerDeath();
         }
     }
 

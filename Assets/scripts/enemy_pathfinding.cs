@@ -5,6 +5,7 @@ using UnityEngine;
 public class enemy_pathfinding : MonoBehaviour
 {
     private GameObject player;
+    private bool playerAlive; // tied to healthbar.cs of player
     private bool alive; // tied to healthbar.cs
     private int speed;
     public int walkSpeed;
@@ -25,8 +26,9 @@ public class enemy_pathfinding : MonoBehaviour
     {
         Vector2 direction = player.transform.position - rb.transform.position;
         alive = GetComponent<healthbar>().alive;
+        playerAlive = player.GetComponent<healthbar>().alive;
 
-        if (alive)
+        if (alive && playerAlive)
         {
             rb.AddForce(new Vector2(speed * Time.deltaTime * Random.Range(1, randDirectionModifier), speed * Time.deltaTime * Random.Range(1, randDirectionModifier)) * direction.normalized);
         }

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
-using UnityEditor.Search;
 using UnityEngine;
 
 public class Player_controller : MonoBehaviour
@@ -40,15 +39,10 @@ public class Player_controller : MonoBehaviour
             rb.AddForce(new Vector2(speed * Input.GetAxis("Horizontal") * Time.deltaTime, speed * Input.GetAxis("Vertical") * Time.deltaTime));
         }
 
-        if (Input.GetButton("Fire1") && canShoot)
+        if (Input.GetButton("Fire1") && canShoot && alive)
         {
             // gets position of the mouse in world space
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log(Input.mousePosition);
-            // Vector3 halfScreenSize = new Vector3(Screen.width, Screen.height, 0) / 2;
-            // Vector3 mousepos = Input.mousePosition + new Vector3(-halfScreenSize.x, -halfScreenSize.y, 0) - halfScreenSize; // cam.ScreenToWorldPoint(Input.mousePosition);
-
-
 
             // shoot delay
             canShoot = false;
