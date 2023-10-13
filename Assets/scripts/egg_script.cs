@@ -20,7 +20,17 @@ public class egg_script : MonoBehaviour
     private float homingForceMult;
     private GameObject player;
 
+    public float bulletKnockbackForce;
 
+    // knockbacks egg on hit from bullet
+    void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.tag == "bullet") {
+            Destroy(col.collider.gameObject);
+
+            Vector2 knockDirection = player.transform.position - gameObject.transform.position;
+            rb.AddForce(-knockDirection.normalized * bulletKnockbackForce, ForceMode2D.Impulse);
+        }
+    }
 
     public void SetGravForce(Vector2 g)
     {

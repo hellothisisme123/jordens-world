@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class healthbar : MonoBehaviour
     public GameObject uiManagerGO;
     private bool invinsible;
     public float iFrames; // in seconds
+    public float hpDivider; // hpHealedOnRoundEnd = (maxHp / 2) + (maxHp / hp)
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +28,19 @@ public class healthbar : MonoBehaviour
         invinsible = false;
     }
 
+    public void setHp(float x) {
+        hp = x;
+    }
+
+    public float getHp() {
+        return hp;
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
         Animator animator = GetComponent<Animator>();
 
-        if (col.collider.gameObject.tag == "bullet" && gameObject.tag != "Player")
+        if (col.collider.gameObject.tag == "bullet" && gameObject.tag == "enemy")
         {
             Destroy(col.collider.gameObject);
             hp--;
@@ -47,7 +57,7 @@ public class healthbar : MonoBehaviour
                 // for now this isnt yet implemented
             }
 
-            if (col.collider.gameObject.tag == "enemy" || col.collider.gameObject.tag == "enemy")
+            if (col.collider.gameObject.tag == "enemy" || col.collider.gameObject.tag == "egg")
             {
                 hp--;
                 animator.SetBool("playerHurt", true);
@@ -59,8 +69,6 @@ public class healthbar : MonoBehaviour
                 {
                     enemy.GetComponent<Rigidbody2D>().AddForce(damageDirection.normalized * damagePlayerEnemyKnockback);
                 }
-                
-                healthFill.fillAmount = hp / maxHp;
             }
         }
         
@@ -70,9 +78,27 @@ public class healthbar : MonoBehaviour
         }
     }
 
+    void Update() {
+        if (gameObject.tag == "Player") {
+            healthFill.fillAmount = hp / maxHp;
+        }
+    }
+
     private IEnumerator setInvinsible() {
         yield return new WaitForSeconds(iFrames);
         invinsible = false;
+    }
+
+    public void explosionAnimationStart(Animation a)
+    {
+        if (gameObject.tag != "Player")
+        {
+            foreach (var cc2d in gameObject.GetComponents<CircleCollider2D>())
+            {
+                Destroy(cc2d);
+            }
+        }
+        alive = false;
     }
 
     public void explosionAnimationEnd(Animation a)
@@ -89,14 +115,5 @@ public class healthbar : MonoBehaviour
             ui_manager uiManagerScript = uiManagerGO.GetComponent<ui_manager>();
             uiManagerScript.playerDeath();
         }
-    }
-
-    public void explosionAnimationStart(Animation a)
-    {
-        if (gameObject.tag != "Player")
-        {
-            Destroy(gameObject.GetComponent<CircleCollider2D>());
-        }
-        alive = false;
     }
 }

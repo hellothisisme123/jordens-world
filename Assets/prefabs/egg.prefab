@@ -134,6 +134,7 @@ MonoBehaviour:
   spinSpeed: 2
   gravForce: {x: 0, y: 0}
   launchForce: {x: 0, y: 0}
+  bulletKnockbackForce: 10
 --- !u!70 &883321236419191278
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class mother_script : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
-        StartCoroutine(allowSpawn());
+        StartCoroutine(allowSpawnOnStart());
     }
 
     // Update is called once per frame
@@ -75,6 +75,12 @@ public class mother_script : MonoBehaviour
     private IEnumerator allowSpawn()
     {
         yield return new WaitForSeconds(spawnDelay);
+        canSpawn = true;
+    }
+
+    private IEnumerator allowSpawnOnStart()
+    {
+        yield return new WaitForSeconds(Random.Range(0, spawnDelay));
         canSpawn = true;
     }
 }

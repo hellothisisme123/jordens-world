@@ -171,6 +171,8 @@ MonoBehaviour:
   alive: 0
   healthFill: {fileID: 0}
   uiManagerGO: {fileID: 0}
+  iFrames: 0
+  hpDivider: 0
 --- !u!95 &1727165046738509679
 Animator:
   serializedVersion: 5
@@ -207,7 +209,7 @@ MonoBehaviour:
   subEnemyRef: {fileID: 6671867368555442382, guid: 468d7ddf59f74e84ba3558a1100c1b0d, type: 3}
   spawnedLimit: 10
   swarmSize: 3
-  spawnDelay: 5
+  spawnDelay: 7.5
   spawnRadius: 3
   randomizeSpawnRadius: 0
   minEnemyDistanceToPlayer: 0
