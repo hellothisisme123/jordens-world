@@ -173,7 +173,8 @@ MonoBehaviour:
   shootDelay: 0.3
   canShoot: 1
   alive: 0
-  rb: {fileID: 0}
+  multiShotCount: 3
+  multiShotSpread: 45
 --- !u!114 &5238955579069566032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +192,9 @@ MonoBehaviour:
   damagePlayerPlayerKnockback: 750
   alive: 0
   healthFill: {fileID: 0}
+  uiManagerGO: {fileID: 0}
+  iFrames: 0
+  hpDivider: 0
 --- !u!95 &6178513157202530802
 Animator:
   serializedVersion: 5
