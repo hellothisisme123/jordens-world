@@ -25,7 +25,9 @@ public class Player_controller : MonoBehaviour
 
     // multishot
     public int multiShotCount;
-    public int multiShotSpread;
+    public float multiShotSpread; 
+    public bool mutiShotSpreadFunctionOfCount;
+    public float multiShotSpreadMult; // multiplies the multishot count by this to get the spread if the bool is active
     
 
 
@@ -34,6 +36,11 @@ public class Player_controller : MonoBehaviour
     {
         canShoot = true;
         rb = GetComponent<Rigidbody2D>();
+
+        if (mutiShotSpreadFunctionOfCount) {
+            Debug.Log($"set multishot spread according to count multiplier of {multiShotSpreadMult}");
+            multiShotSpread = multiShotCount * multiShotSpreadMult;
+        }
     }
 
     // Update is called once per frame
@@ -56,23 +63,21 @@ public class Player_controller : MonoBehaviour
             StartCoroutine(shootDelayFunc());
 
             // create bullet
-            for (int i = 0; i < multiShotCount; i++)
-            {
-
+            for (float i = 0; i < multiShotCount; i++)
+            {   
                 Vector2 projDirection = mousePos - rb.position;
+                if (multiShotCount != 1) {
+                    // adjusts the index so the bills are centered on the mouse
+                    // do not compress to one line, it breaks
+                    float i2 = (multiShotCount-1)%2;
+                    i2 = i2 / 2 + i;
+                    i2 = i2 - multiShotCount/2;
+        
+                    // adjusts the angle of the shot for multishot
+                    float shotAngle = multiShotSpread / (multiShotCount-1) * i2;
+                    projDirection = Quaternion.AngleAxis(shotAngle, Vector3.forward) * projDirection;
+                }
                 projDirection = projDirection.normalized;
-
-                float shotAngle = multiShotSpread / (multiShotCount-1) * i;
-                // shotAngle -= multiShotSpread / (multiShotCount-1) * multiShotCount/2;
-                // shotAngle -= multiShotSpread / (multiShotCount-1)/2;
-
-                projDirection = Quaternion.AngleAxis(shotAngle, Vector2.right) * projDirection;
-                Debug.Log(projDirection);
-                // float startAngle = Mathf.Acos(projDirection.x) * Mathf.Rad2Deg;
-                // float startAngle = Vector2.Angle(Vector2.zero, projDirection);
-                // Debug.Log(startAngle);
-
-                // projDirection = new Vector2(Mathf.Cos(shotAngle + startAngle), Mathf.Sin(shotAngle + startAngle));
 
                 Vector2 billPos = rb.transform.position + (new Vector3(projDirection.x, projDirection.y, 0) * billOffset);
                 GameObject bill = Instantiate(billPrefab, billPos, Quaternion.identity, rb.transform);

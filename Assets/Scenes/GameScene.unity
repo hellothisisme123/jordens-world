@@ -5870,11 +5870,19 @@ PrefabInstance:
       objectReference: {fileID: 412293835}
     - target: {fileID: 2404668061055578615, guid: 7fbe3867322651545b5638fa3567c754, type: 3}
       propertyPath: multiShotCount
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2404668061055578615, guid: 7fbe3867322651545b5638fa3567c754, type: 3}
       propertyPath: multiShotSpread
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404668061055578615, guid: 7fbe3867322651545b5638fa3567c754, type: 3}
+      propertyPath: multiShotSpreadMult
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404668061055578615, guid: 7fbe3867322651545b5638fa3567c754, type: 3}
+      propertyPath: mutiShotSpreadFunctionOfCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3370523530742072121, guid: 7fbe3867322651545b5638fa3567c754, type: 3}
       propertyPath: m_RootOrder
