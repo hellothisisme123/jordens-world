@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -8,7 +10,6 @@ using UnityEngine.UI;
 
 public class healthbar : MonoBehaviour
 {
-
     public float maxHp;
     private float hp;
     public int damagePlayerEnemyKnockback;
@@ -19,8 +20,10 @@ public class healthbar : MonoBehaviour
     private bool invinsible;
     public float iFrames; // in seconds
     public float hpDivider; // hpHealedOnRoundEnd = (maxHp / 2) + (maxHp / hp)
+    public GameObject coinPrefab;
+    public float coinLaunchForce;
+    public int coinDropCount;
 
-    // Start is called before the first frame update
     void Start()
     {
         alive = true;
@@ -75,6 +78,14 @@ public class healthbar : MonoBehaviour
         if (hp <= 0)
         {
             animator.SetTrigger("die");
+            if (gameObject.tag == "enemy" && coinPrefab != null) {
+                for (int i = 0; i < coinDropCount; i++)
+                {
+                    GameObject spawnedCoin = Instantiate(coinPrefab, gameObject.transform.position, quaternion.identity);
+                    Vector2 randomVector = new Vector2(UnityEngine.Random.Range(-1, 1), UnityEngine.Random.Range(-1, 1));
+                    spawnedCoin.GetComponent<Rigidbody2D>().AddForce(randomVector * coinLaunchForce, ForceMode2D.Impulse);    
+                }
+            }
         }
     }
 

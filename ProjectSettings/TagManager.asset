@@ -12,6 +12,7 @@ TagManager:
   - enemyRenderer
   - mainCam
   - egg
+  - coin
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - enemies
   - enemyProjectiles
   - playerProjectiles
-  - 
+  - coins
   - 
   - 
   - 

@@ -171,6 +171,12 @@ MonoBehaviour:
   damagePlayerPlayerKnockback: 0
   alive: 0
   healthFill: {fileID: 0}
+  uiManagerGO: {fileID: 0}
+  iFrames: 0
+  hpDivider: 0
+  coinPrefab: {fileID: 920569512896634922, guid: f26dd4b9c50bd2647b1c4ea6ea48572b, type: 3}
+  coinLaunchForce: 15
+  coinDropCount: 4
 --- !u!95 &1727165046738509679
 Animator:
   serializedVersion: 5

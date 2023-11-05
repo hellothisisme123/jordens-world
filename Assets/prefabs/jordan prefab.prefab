@@ -175,6 +175,8 @@ MonoBehaviour:
   alive: 0
   multiShotCount: 3
   multiShotSpread: 45
+  mutiShotSpreadFunctionOfCount: 0
+  multiShotSpreadMult: 0
 --- !u!114 &5238955579069566032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +197,8 @@ MonoBehaviour:
   uiManagerGO: {fileID: 0}
   iFrames: 0
   hpDivider: 0
+  coinPrefab: {fileID: 0}
+  coinLaunchForce: 15
 --- !u!95 &6178513157202530802
 Animator:
   serializedVersion: 5

@@ -18,6 +18,8 @@ public class ui_manager : MonoBehaviour
     private bool alive; // tied to healthbar.cs
     public GameObject player;
     public SceneManager sceneManager;
+    public GameObject nolansShop;
+    public GameObject mainPauseMenu; // the pause menu that isn't nolans shop
 
     void Start()
     {
@@ -40,6 +42,16 @@ public class ui_manager : MonoBehaviour
 
     public void restartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void goToShop() {
+        nolansShop.SetActive(true);
+        mainPauseMenu.SetActive(false);
+    }
+
+    public void leaveTheShop() {
+        nolansShop.SetActive(false);
+        mainPauseMenu.SetActive(true);
     }
 
     void Update()

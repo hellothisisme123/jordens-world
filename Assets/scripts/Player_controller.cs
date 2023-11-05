@@ -70,7 +70,7 @@ public class Player_controller : MonoBehaviour
                     // adjusts the index so the bills are centered on the mouse
                     // do not compress to one line, it breaks
                     float i2 = (multiShotCount-1)%2;
-                    i2 = i2 / 2 + i;
+                    i2 = i2 / 2 + i; 
                     i2 = i2 - multiShotCount/2;
         
                     // adjusts the angle of the shot for multishot
