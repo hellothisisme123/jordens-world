@@ -65,7 +65,7 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "jordens-world.sln",
+    "dotnet.defaultSolution": "jordens-world-1.sln",
     "kestudiocode.iec.toolchainVersion": "1.2.0-alpha.10",
     "[iec_src1]": {
         "files.encoding": "windows1252"

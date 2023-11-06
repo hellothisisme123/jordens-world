@@ -47,6 +47,8 @@ public class healthbar : MonoBehaviour
         {
             Destroy(col.collider.gameObject);
             hp--;
+        } else if (col.collider.gameObject.tag == "bonzai" && gameObject.tag == "enemy") {
+            hp--;
         }
 
         if (gameObject.tag == "Player" && alive)

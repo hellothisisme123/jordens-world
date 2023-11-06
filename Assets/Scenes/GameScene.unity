@@ -1730,7 +1730,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284056212}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38ef5bc8841d81747be4ba4f9d626c7d, type: 3}
   m_Name: 
@@ -1764,6 +1764,42 @@ MonoBehaviour:
   cam: {fileID: 225898285}
   shootDelay: 0.3
   altFire: 0
+--- !u!114 &284056235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284056212}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b98004253ec6d441b60d8f5c1b09a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projspeed: 5
+  bonzai: {fileID: 4155442463144647397, guid: 71e85552f2c731f44b94b487a75e638c, type: 3}
+  billOffset: 2.5
+  cam: {fileID: 225898285}
+  shootDelay: 4
+  altFire: 1
+--- !u!114 &284056236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284056212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7245331f108785542ad90de93ccd0be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projspeed: 35
+  chargedBill: {fileID: 4155442463144647397, guid: d4cc4b22c6e0cd04495602215521a5bb, type: 3}
+  billOffset: 1
+  cam: {fileID: 225898285}
+  shootDelay: 1
+  altFire: 1
 --- !u!1 &304673227
 GameObject:
   m_ObjectHideFlags: 0
@@ -8569,8 +8605,9 @@ GameObject:
   - component: {fileID: 1520754671}
   - component: {fileID: 1520754673}
   - component: {fileID: 1520754672}
+  - component: {fileID: 1520754674}
   m_Layer: 0
-  m_Name: playerPowerUpDefault
+  m_Name: playerPowerUpDefaults
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8631,6 +8668,24 @@ MonoBehaviour:
   mutiShotSpreadFunctionOfCount: 1
   multiShotSpreadMult: 5
   knockbackForce: 60
+  altFire: 1
+--- !u!114 &1520754674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520754670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b98004253ec6d441b60d8f5c1b09a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projspeed: 5
+  bonzai: {fileID: 4155442463144647397, guid: 71e85552f2c731f44b94b487a75e638c, type: 3}
+  billOffset: 2.5
+  cam: {fileID: 225898285}
+  shootDelay: 4
   altFire: 1
 --- !u!1 &1540938699
 GameObject:
@@ -11127,4 +11182,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7135631591048536652, guid: 7fbe3867322651545b5638fa3567c754, type: 3}
       insertIndex: -1
       addedObject: {fileID: 284056229}
+    - targetCorrespondingSourceObject: {fileID: 7135631591048536652, guid: 7fbe3867322651545b5638fa3567c754, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 284056235}
+    - targetCorrespondingSourceObject: {fileID: 7135631591048536652, guid: 7fbe3867322651545b5638fa3567c754, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 284056236}
   m_SourcePrefab: {fileID: 100100000, guid: 7fbe3867322651545b5638fa3567c754, type: 3}
