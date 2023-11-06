@@ -18,7 +18,7 @@ public class camera_script : MonoBehaviour
     {
         transform.position = new Vector3(player.position.x, player.position.y, gameObject.transform.position.z);
         
-        if (dynamicSize) {
+        if (dynamicSize && Time.timeScale > 0) {
             mainCam.fieldOfView += -Input.mouseScrollDelta.y * scrollSpeed;
             if (mainCam.fieldOfView > minMaxSize.y) {
                 mainCam.fieldOfView = minMaxSize.y;

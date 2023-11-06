@@ -23,6 +23,9 @@ public class enemy_spawner : MonoBehaviour
 
     public Vector2 randomSpawnRange; // min max
     public float waveDowntime;
+    public int hideSpawnDelayAfterFightDelay;
+    private float currentWaveDowntime;
+    public TextMeshProUGUI roundStartCountdown;
 
     public GameObject milo;
     public GameObject aveah;
@@ -59,16 +62,32 @@ public class enemy_spawner : MonoBehaviour
         // hpHealed = (maxHp / 2) + (maxHp / hp) // more heals when low, less heals when high
         playerHealthbar.setHp(Mathf.Clamp((playerHealthbar.maxHp / playerHealthbar.hpDivider) + (playerHealthbar.maxHp / playerHealthbar.getHp()) + playerHealthbar.getHp(), 0, playerHealthbar.maxHp));
 
-
+        currentWaveDowntime = waveDowntime;
+        roundStartCountdown.text = $"Round starts in {currentWaveDowntime}";
         StartCoroutine(spawnEnemiesDelay());
     }
 
     // adds a downtime until the enemies are spawned 
     private IEnumerator spawnEnemiesDelay()
     {
-        yield return new WaitForSeconds(waveDowntime);
-        waveActive = true;
-        spawnEnemies();
+        yield return new WaitForSeconds(1);
+        Debug.Log(currentWaveDowntime);
+        currentWaveDowntime--;
+        roundStartCountdown.text = $"Round starts in {currentWaveDowntime}";
+
+        if (currentWaveDowntime == 0) {
+            waveActive = true;
+            roundStartCountdown.text = $"Fight!!!";
+            StartCoroutine(hideSpawnDelay());
+            spawnEnemies();
+        } else {
+            StartCoroutine(spawnEnemiesDelay());
+        }
+    }
+
+    private IEnumerator hideSpawnDelay() {
+        yield return new WaitForSeconds(hideSpawnDelayAfterFightDelay);
+        roundStartCountdown.text = $" ";
     }
 
     void spawnEnemies() {
@@ -92,6 +111,8 @@ public class enemy_spawner : MonoBehaviour
             GameObject newEnemy = Instantiate(enemyGameobjects[enemyPick], enemySpawnPos, Quaternion.identity, enemiesContainer.transform);
         }
     }
+
+
 
     void Update()
     {
