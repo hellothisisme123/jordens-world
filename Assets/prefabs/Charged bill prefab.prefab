@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 3221967015700574164}
   - component: {fileID: -5175300731202275323}
   - component: {fileID: 1103980069581451385}
+  - component: {fileID: 2882408099223661569}
   m_Layer: 10
   m_Name: Charged bill prefab
-  m_TagString: bullet
+  m_TagString: chargeShot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +145,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -1.19, y: 0}
@@ -276,3 +277,15 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &2882408099223661569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4155442463144647397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d7eefefd3ce6c4799e58739231eef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

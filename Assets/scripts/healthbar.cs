@@ -23,12 +23,15 @@ public class healthbar : MonoBehaviour
     public GameObject coinPrefab;
     public float coinLaunchForce;
     public int coinDropCount;
+    private Animator animator;
 
     void Start()
     {
         alive = true;
         hp = maxHp;
         invinsible = false;
+        animator = GetComponent<Animator>();
+
     }
 
     public void setHp(float x) {
@@ -41,15 +44,13 @@ public class healthbar : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Animator animator = GetComponent<Animator>();
-
         if (col.collider.gameObject.tag == "bullet" && gameObject.tag == "enemy")
         {
             Destroy(col.collider.gameObject);
             hp--;
         } else if (col.collider.gameObject.tag == "bonzai" && gameObject.tag == "enemy") {
             hp--;
-        }
+        } 
 
         if (gameObject.tag == "Player" && alive)
         {
@@ -76,9 +77,16 @@ public class healthbar : MonoBehaviour
                 }
             }
         }
-        
+    }
+
+    void Update() {
+        if (gameObject.tag == "Player") {
+            healthFill.fillAmount = hp / maxHp;
+        }
+
         if (hp <= 0)
         {
+            hp = 1000000;
             animator.SetTrigger("die");
             if (gameObject.tag == "enemy" && coinPrefab != null) {
                 for (int i = 0; i < coinDropCount; i++)
@@ -88,12 +96,6 @@ public class healthbar : MonoBehaviour
                     spawnedCoin.GetComponent<Rigidbody2D>().AddForce(randomVector * coinLaunchForce, ForceMode2D.Impulse);    
                 }
             }
-        }
-    }
-
-    void Update() {
-        if (gameObject.tag == "Player") {
-            healthFill.fillAmount = hp / maxHp;
         }
     }
 

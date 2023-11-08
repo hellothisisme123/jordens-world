@@ -1483,7 +1483,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 4.646011, y: -0.42194355, z: 3.815521, w: 328.7105}
+  m_margin: {x: 4.646011, y: -0.42194355, z: 3.815521, w: 357.72885}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1798,7 +1798,8 @@ MonoBehaviour:
   chargedBill: {fileID: 4155442463144647397, guid: d4cc4b22c6e0cd04495602215521a5bb, type: 3}
   billOffset: 1
   cam: {fileID: 225898285}
-  shootDelay: 1
+  shootDelay: 1.5
+  chargeDuration: 1.5
   altFire: 1
 --- !u!1 &304673227
 GameObject:
