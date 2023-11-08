@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class multishot : MonoBehaviour
 {
@@ -22,11 +23,15 @@ public class multishot : MonoBehaviour
     public float multiShotSpreadMult; // multiplies the multishot count by this to get the spread if the bool is active
     public float knockbackForce;
 
+    private float shootDelayBarIndex; 
+    public Image shootDelayBar;
+
     public bool altFire;
 
     void Start()
     {
         canShoot = true;
+        shootDelayBarIndex = shootDelay;
         rb = GetComponent<Rigidbody2D>();
 
         if (mutiShotSpreadFunctionOfCount) {
@@ -38,11 +43,19 @@ public class multishot : MonoBehaviour
     void Update()
     {
         alive = GetComponent<healthbar>().alive;
+        shootDelayBarIndex += Time.deltaTime;
+        if (shootDelayBarIndex > shootDelay) {
+            shootDelayBarIndex = shootDelay;
+        }
+        shootDelayBar.fillAmount = shootDelayBarIndex / shootDelay;
+        
 
         string keyBind = "mainFire";
         if (altFire) keyBind = "altFire";
         if (Input.GetButton(keyBind) && canShoot && alive && Time.timeScale > 0)
         {
+            shootDelayBarIndex = 0;
+
             // gets position of the mouse in world space
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 

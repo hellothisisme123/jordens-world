@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class regularFire : MonoBehaviour
@@ -14,23 +15,35 @@ public class regularFire : MonoBehaviour
     private bool canShoot;
     private bool alive; // tied to healthbar.cs
     private Rigidbody2D rb;
+
+    private float shootDelayBarIndex; 
+    public Image shootDelayBar;
     
     public bool altFire;
 
     void Start()
     {
         canShoot = true;
+        shootDelayBarIndex = shootDelay;
         rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         alive = GetComponent<healthbar>().alive;
+        shootDelayBarIndex += Time.deltaTime;
+        if (shootDelayBarIndex > shootDelay) {
+            shootDelayBarIndex = shootDelay;
+        }
+        shootDelayBar.fillAmount = shootDelayBarIndex / shootDelay;
+        
 
         string keyBind = "mainFire";
         if (altFire) keyBind = "altFire";
         if (Input.GetButton(keyBind) && canShoot && alive && Time.timeScale > 0)
         {
+            shootDelayBarIndex = 0;
+        
             // gets position of the mouse in world space
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 

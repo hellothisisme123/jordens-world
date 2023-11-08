@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class chargeShot : MonoBehaviour
 {
@@ -12,22 +13,30 @@ public class chargeShot : MonoBehaviour
     public Camera cam;
     public float shootDelay;
     public float chargeDuration;
-    private bool canShoot;
     private bool alive; // tied to healthbar.cs
     private Rigidbody2D rb;
     private float chargeIndex;
+    public float minChargeMult;
+
+    public Image shootDelayBar;
+    public GameObject minChargeMarker;
     
     public bool altFire;
 
     void Start()
     {
-        canShoot = true;
         rb = GetComponent<Rigidbody2D>();
+        // 2.5 is the width of the marking
+        // 192.5 is the width of the fill image - the width of the marking (195 - 2.5)
+        // -100 is to account for a discrepency between localPosition and the transform.position
+        //   im not sure where -100 came from    
+        minChargeMarker.GetComponent<RectTransform>().localPosition = new Vector3(-100f + 2.5f + (192.5f * (1-minChargeMult)), 0, 0);
     }
 
     void Update()
     {
         alive = GetComponent<healthbar>().alive;
+        shootDelayBar.fillAmount = (chargeDuration - chargeIndex) / chargeDuration;
 
         string keyBind = "mainFire";
         if (altFire) keyBind = "altFire";
@@ -38,14 +47,10 @@ public class chargeShot : MonoBehaviour
                 chargeIndex = chargeDuration;
             }
         } else {
-            if (canShoot && alive && Time.timeScale > 0 && chargeIndex > 0)
+            if (alive && Time.timeScale > 0 && chargeIndex > chargeDuration*minChargeMult)
             {
                 // gets position of the mouse in world space
                 Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-                // shoot delay
-                canShoot = false;
-                StartCoroutine(shootDelayFunc());
 
                 Vector2 projDirection = mousePos - rb.position;
                 projDirection = projDirection.normalized;
@@ -59,12 +64,5 @@ public class chargeShot : MonoBehaviour
             
             chargeIndex = 0;
         }
-    }
-
-
-    private IEnumerator shootDelayFunc()
-    {
-        yield return new WaitForSeconds(shootDelay);
-        canShoot = true;
     }
 }
