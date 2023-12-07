@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+// script on the charged bill itself
 public class chargedBillScript : MonoBehaviour
 {
     public float knockbackForce;

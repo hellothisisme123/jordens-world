@@ -15,6 +15,13 @@ GameObject:
   - component: {fileID: 2404668061055578615}
   - component: {fileID: 5238955579069566032}
   - component: {fileID: 6178513157202530802}
+  - component: {fileID: 1019217212047133887}
+  - component: {fileID: 5337735839762402510}
+  - component: {fileID: 358464238945613758}
+  - component: {fileID: 1189177420925158731}
+  - component: {fileID: 7884116305253204090}
+  - component: {fileID: 6492037816167352920}
+  - component: {fileID: 3918221814440633806}
   m_Layer: 7
   m_Name: jordan prefab
   m_TagString: Player
@@ -35,7 +42,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &407428976277430856
 SpriteRenderer:
@@ -76,7 +83,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2106640835
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 125561b000a50174ebef08fe74ea79c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -163,20 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f2dc27d67670429a4502665d2f518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4000
-  projspeed: 10
-  projLifespan: 5
-  billPrefab: {fileID: 4155442463144647397, guid: 4dd51d8e2e41d7a43a785688ae809de7, type: 3}
-  bill: {fileID: 21300000, guid: d03a1203ae9d12c4a869b4c73ec51545, type: 3}
-  billOffset: 1
-  cam: {fileID: 0}
-  shootDelay: 0.3
-  canShoot: 1
   alive: 0
-  multiShotCount: 3
-  multiShotSpread: 45
-  mutiShotSpreadFunctionOfCount: 0
-  multiShotSpreadMult: 0
+  speed: 4000
 --- !u!114 &5238955579069566032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,16 +184,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88741ae126523d34fa2371effb311d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 3
+  maxHp: 5
   damagePlayerEnemyKnockback: 2000
   damagePlayerPlayerKnockback: 750
   alive: 0
   healthFill: {fileID: 0}
   uiManagerGO: {fileID: 0}
-  iFrames: 0
-  hpDivider: 0
+  iFrames: 0.5
+  hpDivider: 3
   coinPrefab: {fileID: 0}
   coinLaunchForce: 15
+  coinDropCount: 0
 --- !u!95 &6178513157202530802
 Animator:
   serializedVersion: 5
@@ -220,3 +216,140 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1019217212047133887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135631591048536652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac04846489ba31f469445f6c319f2081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rollSpeed: 40
+  rollDelay: 0.5
+  rollImage: {fileID: 0}
+--- !u!114 &5337735839762402510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135631591048536652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc40eda48ae75254cb794b9b684ca498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins: 0
+  coinHudUI: {fileID: 0}
+  coinShopUI: {fileID: 0}
+  bonzaiBuddy: {fileID: 7884116305253204090}
+  chargeShot: {fileID: 3918221814440633806}
+  mine: {fileID: 0}
+  multishot: {fileID: 1189177420925158731}
+  activePowerUp: 3
+--- !u!114 &358464238945613758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135631591048536652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a23bfa075e23ac41ad4ad874a91158d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projspeed: 15
+  regularBill: {fileID: 4155442463144647397, guid: 4dd51d8e2e41d7a43a785688ae809de7, type: 3}
+  billOffset: 1
+  cam: {fileID: 0}
+  shootDelay: 0.3
+  shootDelayBar: {fileID: 0}
+  altFire: 0
+--- !u!114 &1189177420925158731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135631591048536652}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ef5bc8841d81747be4ba4f9d626c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projspeed: 15
+  regularBill: {fileID: 4155442463144647397, guid: 4dd51d8e2e41d7a43a785688ae809de7, type: 3}
+  billOffset: 1
+  cam: {fileID: 0}
+  shootDelay: 2
+  multiShotCount: 3
+  multiShotSpread: 0
+  mutiShotSpreadFunctionOfCount: 1
+  multiShotSpreadMult: 5
+  knockbackForce: 60
+  shootDelayBar: {fileID: 0}
+  altFire: 1
+--- !u!114 &7884116305253204090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135631591048536652}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b98004253ec6d441b60d8f5c1b09a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projspeed: 5
+  bonzai: {fileID: 4155442463144647397, guid: 71e85552f2c731f44b94b487a75e638c, type: 3}
+  billOffset: 2.5
+  cam: {fileID: 0}
+  shootDelay: 4
+  shootDelayBar: {fileID: 0}
+  altFire: 1
+--- !u!114 &6492037816167352920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135631591048536652}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b0ceea261dfa24599d50ba1a98aa9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minePrefab: {fileID: 0}
+  mineOffset: 0
+  cam: {fileID: 0}
+  shootDelay: 0
+  shootDelayBar: {fileID: 0}
+  altFire: 0
+--- !u!114 &3918221814440633806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135631591048536652}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7245331f108785542ad90de93ccd0be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projspeed: 35
+  chargedBill: {fileID: 4155442463144647397, guid: d4cc4b22c6e0cd04495602215521a5bb, type: 3}
+  billOffset: 1
+  cam: {fileID: 0}
+  shootDelay: 1.5
+  chargeDuration: 1.5
+  minChargeMult: 0.3
+  shootDelayBar: {fileID: 0}
+  minChargeMarker: {fileID: 0}
+  altFire: 1

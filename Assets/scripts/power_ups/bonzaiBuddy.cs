@@ -12,7 +12,6 @@ public class bonzaiBuddy : MonoBehaviour
 
     public Camera cam;
     public float shootDelay;
-    private bool canShoot;
     private bool alive; // tied to healthbar.cs
     private Rigidbody2D rb;
     
@@ -23,9 +22,12 @@ public class bonzaiBuddy : MonoBehaviour
 
     void Start()
     {
-        canShoot = true;
         shootDelayBarIndex = shootDelay;
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void resetShootDelay() {
+        shootDelayBarIndex = shootDelay;
     }
 
     void Update()
@@ -39,16 +41,12 @@ public class bonzaiBuddy : MonoBehaviour
 
         string keyBind = "mainFire";
         if (altFire) keyBind = "altFire";
-        if (Input.GetButton(keyBind) && canShoot && alive && Time.timeScale > 0)
+        if (Input.GetButton(keyBind) && shootDelayBarIndex >= shootDelay && alive && Time.timeScale > 0)
         {
             shootDelayBarIndex = 0;
             
             // gets position of the mouse in world space
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-            // shoot delay
-            canShoot = false;
-            StartCoroutine(shootDelayFunc());
 
             Vector2 projDirection = mousePos - rb.position;
             projDirection = projDirection.normalized;
@@ -59,11 +57,5 @@ public class bonzaiBuddy : MonoBehaviour
             bill.transform.rotation = Quaternion.Euler(0, 0, projRotation);
             bill.GetComponent<Rigidbody2D>().velocity = projDirection * projspeed;
         }
-    }
-
-    private IEnumerator shootDelayFunc()
-    {
-        yield return new WaitForSeconds(shootDelay);
-        canShoot = true;
     }
 }

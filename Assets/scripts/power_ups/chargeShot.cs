@@ -11,7 +11,6 @@ public class chargeShot : MonoBehaviour
     public float billOffset;
 
     public Camera cam;
-    public float shootDelay;
     public float chargeDuration;
     private bool alive; // tied to healthbar.cs
     private Rigidbody2D rb;
