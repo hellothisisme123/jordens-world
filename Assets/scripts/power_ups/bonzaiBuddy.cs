@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class bonzaiBuddy : MonoBehaviour
+public class bonzaiBuddy : powerUp
 {
     public int projspeed;
 

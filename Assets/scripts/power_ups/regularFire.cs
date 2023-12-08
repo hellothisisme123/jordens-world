@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class regularFire : MonoBehaviour
+public class regularFire : powerUp
 {
     public int projspeed;
 

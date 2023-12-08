@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class mine : MonoBehaviour
+public class mine : powerUp
 {
     public GameObject minePrefab;
     public float mineOffset;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class multishot : MonoBehaviour
+public class multishot : powerUp
 {
     public int projspeed;
 
